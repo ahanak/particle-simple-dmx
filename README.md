@@ -16,19 +16,31 @@ _TODO: update this README_
 
 ## Usage
 
-Connect XYZ hardware, add the SimpleDmx library to your project and follow this simple example:
+### Hardware
+
+Connect a RS-485 transceiver IC like (75176BP) to the `TX` pin of your particle device. 
+
+A minimal example for quick tests with the photon:
+
+![breadboard example](hardware/breadboard-example.png)
+
+You should decouple the dmx system for more robust applications. 
+Schematics can be found at [www.mathertel.de](http://www.mathertel.de/Arduino/DMXShield.aspx).
+ 
+
+### Software
 
 ```
 #include "SimpleDmx.h"
 SimpleDmx simpleDmx;
 
 void setup() {
-  simpleDmx.begin();
+  simpleDmx.start();
+  simpleDmx.setChannel(0,255);
+  // ...
 }
 
-void loop() {
-  simpleDmx.process();
-}
+void loop() {}
 ```
 
 See the [examples](examples) folder for more details.

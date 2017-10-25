@@ -1,18 +1,13 @@
 # SimpleDmx
 
-A Particle library for SimpleDmx
+A Particle library for sending DMX signals using high-level functions from the particle firmware API.
 
-## Welcome to your library!
+This work is likely not a good solution for professional DMX applications. 
+It works for me with a small setup for ambient lightning.
+I'm not a DMX expert. 
+The implementation is very trivial and NOT optimized e.g. for performance.
+Feel free to [contribute](#Contributing).
 
-To get started, modify the sources in [src](src). Rename the example folder inside [examples](examples) to a more meaningful name and add additional examples in separate folders.
-
-To compile your example you can use `particle compile examples/usage` command in [Particle CLI](https://docs.particle.io/guide/tools-and-features/cli#update-your-device-remotely) or use our [Desktop IDE](https://docs.particle.io/guide/tools-and-features/dev/#compiling-code).
-
-Libraries can also depend on other libraries. To add a dependency use [`particle library add`](https://docs.particle.io/guide/tools-and-features/cli#adding-a-library) or [library management](https://docs.particle.io/guide/tools-and-features/dev/#managing-libraries) in Desktop IDE.
-
-After the library is done you can upload it with `particle library upload` or `Upload` command in the IDE. This will create a private (only visible by you) library that you can use in other projects. If you wish to make your library public, use `particle library publish` or `Publish` command.
-
-_TODO: update this README_
 
 ## Usage
 
@@ -30,6 +25,8 @@ Schematics can be found at [www.mathertel.de](http://www.mathertel.de/Arduino/DM
 
 ### Software
 
+Using the library is as simple as:
+
 ```
 #include "SimpleDmx.h"
 SimpleDmx simpleDmx;
@@ -45,9 +42,6 @@ void loop() {}
 
 See the [examples](examples) folder for more details.
 
-## Documentation
-
-TODO: Describe `SimpleDmx`
 
 ## Contributing
 
@@ -66,6 +60,7 @@ After your changes are done you can upload them with `particle library upload` o
 At this point, you can create a [GitHub pull request](https://help.github.com/articles/about-pull-requests/) with your changes to the original library. 
 
 If you wish to make your library public, use `particle library publish` or `Publish` command.
+
 
 ## LICENSE
 Copyright 2017 André Hanak <impressum@a-hanak.de>

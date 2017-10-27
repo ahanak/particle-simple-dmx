@@ -28,9 +28,6 @@
  */
 class SimpleDmx {
 public:
-    /** The number of DMX channels to send in a packet. */
-    static const size_t NUM_CHANNELS = 512;
-
     /**
      * Create a new DMX instance for the given serial instance.
      * @param serial is the serial object used, default is the serial on the board (Serial1).
@@ -44,7 +41,7 @@ public:
 
     /**
      * Set the value of a single dmx channel.
-     * @param channel is the number of the dmx channel starting at 0. The highest possible value is  {Dmx::NUM_CHANNELS}.
+     * @param channel is the number of the dmx channel starting at 0. The value must be lower than what #getChannelCount returns.
      * @param value is the value for that channel between 0 and 255.
      */
     void setChannel(size_t channel, uint8_t value);
@@ -52,8 +49,21 @@ public:
     /** Set all channels to zero. */
     void clear();
 
+    /** @return the number of dmx channels. */
+    size_t getChannelCount();
+
+    /**
+     * Read the value of the specified dmx channel.
+     * @param channel is the number of the dmx channel starting at 0. The value must be lower than what #getChannelCount returns.
+     * @return the dmx value of that channel.
+     */
+    uint8_t readChannel(size_t channel);
+
 
 private:
+    /** The number of DMX channels to send in a packet. */
+    static const size_t CHANNEL_COUNT = 512;
+
     /** The boudrate for the dmx bytes to be transmitted */
     static const unsigned long BAUD_RATE = 250000;
 
@@ -76,7 +86,7 @@ private:
     static const unsigned int DURATION_MARK_MIN = 8;
 
     /** The buffer of the channel values. */
-    uint8_t channels[NUM_CHANNELS];
+    uint8_t channels[CHANNEL_COUNT];
 
     /** The hardware serial that is used. */
     USARTSerial& serial;

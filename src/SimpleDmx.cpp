@@ -11,15 +11,23 @@ void SimpleDmx::start() {
 }
 
 void SimpleDmx::setChannel(size_t channel, uint8_t value) {
-    if(channel < NUM_CHANNELS) {
+    if(channel < CHANNEL_COUNT) {
         channels[channel] = value;
     }
 }
 
 void SimpleDmx::clear() {
-    for(size_t i = 0; i < NUM_CHANNELS; i++) {
+    for(size_t i = 0; i < CHANNEL_COUNT; i++) {
         channels[i] = 0;
     }
+}
+
+size_t SimpleDmx::getChannelCount() {
+    return CHANNEL_COUNT;
+}
+
+uint8_t SimpleDmx::readChannel(size_t channel) {
+    return (channel < CHANNEL_COUNT ? channels[channel] : 0);
 }
 
 /* --- Private methods below --- */
@@ -41,7 +49,7 @@ void SimpleDmx::sendPacket() {
     serial.write(0);
 
     // DATA
-    for(size_t i = 0; i < NUM_CHANNELS; i++) {
+    for(size_t i = 0; i < CHANNEL_COUNT; i++) {
         serial.write(channels[i]);
     }
 

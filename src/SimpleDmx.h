@@ -49,7 +49,7 @@ public:
     /** Set all channels to zero. */
     void clear();
 
-    /** @return the number of dmx channels. */
+    /** @return the number of available dmx channels. */
     size_t getChannelCount();
 
     /**

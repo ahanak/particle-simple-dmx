@@ -11,7 +11,7 @@ void setup() {
     simpleDmx.start();
 
     // Turn all channels full on
-    for(size_t channel = 0; channel < SimpleDmx::NUM_CHANNELS; channel++) {
+    for(size_t channel = 0; channel < simpleDmx.getChannelCount(); channel++) {
         simpleDmx.setChannel(channel, 255);
     }
 }
